@@ -1,10 +1,11 @@
+import 'package:external_path/external_path.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:image2pdf_easyconvert/created_pdfs_page.dart';
+import 'package:image2pdf_easyconvert/custom_icon_button.dart';
 import 'package:image2pdf_easyconvert/images_list.dart';
 import 'package:image2pdf_easyconvert/selected_images.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:external_path/external_path.dart';
 
 class MainPage extends StatefulWidget {
   final VoidCallback onToggleTheme;
@@ -84,62 +85,98 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Image to PDF Converter",
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
-            shadows: [
-              Shadow(
-                color: Colors.black.withOpacity(0.3),
-                offset: const Offset(2, 2),
-                blurRadius: 2,
-              ),
-            ],
+            color: Color(0xff232946),
           ),
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xFFEE0909),
-        foregroundColor: Colors.white,
+        backgroundColor: const Color(0xffb8c1ec),
+
         actions: [
           Semantics(
             label: widget.isDarkTheme
                 ? 'Switch to Light Theme'
                 : 'Switch to Dark Theme',
             child: IconButton(
-              icon:
-                  Icon(widget.isDarkTheme ? Icons.nights_stay : Icons.wb_sunny),
+              icon: Icon(
+                widget.isDarkTheme ? Icons.nights_stay : Icons.wb_sunny,
+                color: const Color(0xff232946),
+              ),
               onPressed: widget.onToggleTheme,
             ),
           ),
         ],
       ),
-      body: Center(
+      // body: Center(
+      //   child: Column(
+      //     mainAxisSize: MainAxisSize.min,
+      //     children: [
+      //       _buildButton(
+      //         label: 'Pick Images from Gallery',
+      //         onPressed: _pickGalleryImages,
+      //         icon: Icons.photo_library,
+      //         buttonText: "Gallery Images",
+      //         fontSize: 20,
+      //       ),
+      //       const Gap(20),
+      //       _buildButton(
+      //         label: 'Capture Image with Camera',
+      //         onPressed: _captureCameraImage,
+      //         icon: Icons.camera_alt,
+      //         buttonText: "Camera Image",
+      //         fontSize: 20,
+      //       ),
+      //       const Gap(20),
+      //       _buildButton(
+      //         label: 'View Saved PDFs',
+      //         onPressed: _showCreatedPDFs,
+      //         icon: Icons.picture_as_pdf,
+      //         buttonText: "View Saved PDF",
+      //         fontSize: 20,
+      //       ),
+      //     ],
+      //   ),
+      // ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _buildButton(
-              label: 'Pick Images from Gallery',
-              onPressed: _pickGalleryImages,
-              icon: Icons.photo_library,
-              buttonText: "Gallery Images",
-              fontSize: 20,
+            Semantics(
+              child: CustomIconButton(
+                icon: Icons.photo,
+                color: const Color(0xff232946),
+                backgroundColor: const Color(0xffeebbc3),
+                onTap: _pickGalleryImages,
+                tooltip: "Pick an image from gallery",
+                title: "Pick from gallery",
+              ),
             ),
-            const Gap(20),
-            _buildButton(
-              label: 'Capture Image with Camera',
-              onPressed: _captureCameraImage,
-              icon: Icons.camera_alt,
-              buttonText: "Camera Image",
-              fontSize: 20,
+            Semantics(
+              child: CustomIconButton(
+                icon: Icons.camera,
+                color: const Color(0xff232946),
+                backgroundColor: const Color(0xffeebbc3),
+                onTap: _captureCameraImage,
+                tooltip: "Capture an image from camera",
+                title: "Capture an image",
+              ),
             ),
-            const Gap(20),
-            _buildButton(
-              label: 'View Saved PDFs',
-              onPressed: _showCreatedPDFs,
-              icon: Icons.picture_as_pdf,
-              buttonText: "View Saved PDF",
-              fontSize: 20,
+            Semantics(
+              child: CustomIconButton(
+                icon: Icons.storage,
+                color: const Color(0xff232946),
+                backgroundColor: const Color(0xffeebbc3),
+                onTap: _showCreatedPDFs,
+                tooltip: "Can see saved PDF's",
+                title: "View Saved PDFs",
+              ),
             ),
           ],
         ),

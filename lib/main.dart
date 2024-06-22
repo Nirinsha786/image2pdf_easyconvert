@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:image2pdf_easyconvert/main_page.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   runApp(const Image2PDFEasyConvert());
@@ -42,7 +42,13 @@ class _Image2PDFEasyConvertState extends State<Image2PDFEasyConvert> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: _isDarkTheme ? ThemeData.dark() : ThemeData.light(),
+      // theme: _isDarkTheme
+      //     ? ThemeData.dark(useMaterial3: true)
+      //     : ThemeData.light(useMaterial3: true),
+      theme: _isDarkTheme
+          ? ThemeData(scaffoldBackgroundColor: const Color(0xff232946))
+          : ThemeData(scaffoldBackgroundColor: const Color(0xfffffffe)),
+      themeMode: _isDarkTheme ? ThemeMode.dark : ThemeMode.light,
       home: MainPage(
         onToggleTheme: _toggleTheme,
         isDarkTheme: _isDarkTheme,
