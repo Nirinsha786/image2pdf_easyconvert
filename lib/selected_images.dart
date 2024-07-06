@@ -263,8 +263,7 @@ class _SelectedImagesState extends State<SelectedImages> {
       floatingActionButton: Visibility(
         visible: !_isExporting,
         child: Semantics(
-          label: 'Add Images',
-          button: true,
+          label: 'Add Images From Gallery',
           child: FloatingActionButton(
             onPressed: _addImages,
             backgroundColor: const Color.fromARGB(255, 238, 9, 9),
@@ -277,18 +276,21 @@ class _SelectedImagesState extends State<SelectedImages> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Semantics(
-            label: 'Convert to PDF',
+            label: 'Convert the Image to PDF',
             button: true,
             child: MaterialButton(
               color: const Color.fromARGB(255, 238, 9, 9),
               textColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
               onPressed: _showFileNameDialog,
-              child: const Text(
-                'Convert',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+              child: Semantics(
+                label: 'Convert The Selected image to Pdf',
+                child: const Text(
+                  'Convert',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),

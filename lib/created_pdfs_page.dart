@@ -167,20 +167,20 @@ class _CreatedPDFsPageState extends State<CreatedPDFsPage> {
                 _openPDFFile(file.path);
               }
             },
-            child: ListTile(
-              leading: _isSelectionMode
-                  ? Semantics(
-                      label: 'Select PDF',
-                      child: Checkbox(
-                        value: isSelected,
-                        onChanged: (_) => _toggleSelection(file),
-                      ),
+            child: Semantics(
+              label: 'List of All Saved Pdf Select One',
+              child: ListTile(
+                leading: _isSelectionMode
+                    ? Checkbox(
+                      value: isSelected,
+                      onChanged: (_) => _toggleSelection(file),
                     )
-                  : const Icon(Icons.picture_as_pdf,
-                      size: 40, color: Colors.red),
-              title: Text(
-                path.basename(file.path),
-                style: const TextStyle(fontSize: 18),
+                    : const Icon(Icons.picture_as_pdf,
+                        size: 40, color: Colors.red),
+                title: Text(
+                  path.basename(file.path),
+                  style: const TextStyle(fontSize: 18),
+                ),
               ),
             ),
           );
