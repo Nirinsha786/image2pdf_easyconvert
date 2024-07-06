@@ -95,16 +95,17 @@ class _MainPageState extends State<MainPage> {
         ),
         centerTitle: true,
         backgroundColor: const Color(0xffb8c1ec),
-
         actions: [
           Semantics(
-            label: widget.isDarkTheme
-                ? 'Switch to Light Theme'
-                : 'Switch to Dark Theme',
+            label: 'Theme Mode',
             child: IconButton(
-              icon: Icon(
-                widget.isDarkTheme ? Icons.nights_stay : Icons.wb_sunny,
-                color: const Color(0xff232946),
+              icon: Semantics(
+                label: 'Theme Changing Icon Button',
+                child: Icon(
+                  
+                  widget.isDarkTheme ? Icons.nights_stay : Icons.wb_sunny,
+                  color: const Color(0xff232946),
+                ),
               ),
               onPressed: widget.onToggleTheme,
             ),
@@ -149,6 +150,7 @@ class _MainPageState extends State<MainPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Semantics(
+              label: 'Pick Image From Gallery',
               child: CustomIconButton(
                 icon: Icons.photo,
                 color: const Color(0xff232946),
@@ -159,6 +161,7 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
             Semantics(
+              label: 'Capture Image From Camera',
               child: CustomIconButton(
                 icon: Icons.camera,
                 color: const Color(0xff232946),
@@ -169,6 +172,7 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
             Semantics(
+              label: 'View Saved PDF',
               child: CustomIconButton(
                 icon: Icons.storage,
                 color: const Color(0xff232946),
