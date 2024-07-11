@@ -31,7 +31,7 @@ class _CreatedPDFsPageState extends State<CreatedPDFsPage> {
       final files = directory
           .listSync()
           .whereType<File>()
-          .where((file) => file.path.endsWith('.pdf'))
+          .where((file) => file.path.endsWith('.pdf',),)
           .toList();
       setState(() {
         _pdfFiles = files;
@@ -82,17 +82,25 @@ class _CreatedPDFsPageState extends State<CreatedPDFsPage> {
     final confirmDelete = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Confirm Delete'),
+        title: Semantics(
+          label: 'This Deletes the selected pdf File',
+          child: const Text('Confirm Delete',),),
         content:
-            const Text('Are you sure you want to delete the selected files?'),
+            Semantics(
+              label: 'By clicking on this it will confirm that u want to delete the File',
+              child: const Text('Are you sure you want to delete the selected files?',),),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('No'),
+            child: Semantics(
+              label: 'On clicking this it will cancel the Deleting Process',
+              child: const Text('No',),),
           ),
           TextButton(
             onPressed: () => Navigator.of(context).pop(true),
-            child: const Text('Yes'),
+            child: Semantics(
+              label: 'On clicking this it will Execute the Deleting Process',
+              child: const Text('Yes',),),
           ),
         ],
       ),
@@ -120,11 +128,17 @@ class _CreatedPDFsPageState extends State<CreatedPDFsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          _isSelectionMode
-              ? '${_selectedFiles.length} selected'
-              : 'View Saved PDF',
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        title: Semantics(
+          label: 'This Opens the Pdf Which are converted and Saved',
+          child: Semantics(
+            label: 'This Opens the Pdf Which are converted and Saved',
+            child: Text(
+              _isSelectionMode
+                  ? '${_selectedFiles.length} selected'
+                  : 'View Saved PDF',
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
         ),
         centerTitle: true,
         backgroundColor: const Color(0xFFE30606),
@@ -176,7 +190,7 @@ class _CreatedPDFsPageState extends State<CreatedPDFsPage> {
                       onChanged: (_) => _toggleSelection(file),
                     )
                     : const Icon(Icons.picture_as_pdf,
-                        size: 40, color: Colors.red),
+                        size: 40, color: Colors.red,),
                 title: Text(
                   path.basename(file.path),
                   style: const TextStyle(fontSize: 18),
