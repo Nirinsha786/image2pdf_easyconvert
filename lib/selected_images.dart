@@ -57,7 +57,9 @@ class _SelectedImagesState extends State<SelectedImages> {
       builder: (BuildContext context) {
         String inputFileName = '';
         return AlertDialog(
-          title: const Text('Enter PDF Name'),
+          title: Semantics(
+            label: 'You Can Keep Any Name for your Pdf',
+            child: const Text('Enter PDF Name')),
           content: TextField(
             onChanged: (value) {
               inputFileName = value;
@@ -69,13 +71,17 @@ class _SelectedImagesState extends State<SelectedImages> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text('Cancel'),
+              child: Semantics(
+                label: 'This Will Cancel the selected image',
+                child: const Text('Cancel',),),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(inputFileName);
               },
-              child: const Text('Save'),
+              child: Semantics(
+                label: 'This Will Save the Selected image',
+                child: const Text('Save',),),
             ),
           ],
         );
@@ -145,7 +151,9 @@ class _SelectedImagesState extends State<SelectedImages> {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
                   },
-                  child: const Text('OK'),
+                  child: Semantics(
+                    label: 'Congrats Pdf Saved Succesfully',
+                    child: const Text('OK',),),
                 ),
               ],
             );
@@ -201,7 +209,7 @@ class _SelectedImagesState extends State<SelectedImages> {
         children: [
           if (!_isExporting)
             Semantics(
-              label: 'Image Grid',
+              label: 'Gallery of Images Grid',
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
@@ -221,7 +229,7 @@ class _SelectedImagesState extends State<SelectedImages> {
                         top: 5,
                         right: 5,
                         child: Semantics(
-                          label: 'Remove Image',
+                          label: 'This Will Remove the Selected Image',
                           button: true,
                           child: IconButton(
                             icon: const Icon(Icons.close, color: Colors.black),
@@ -246,13 +254,16 @@ class _SelectedImagesState extends State<SelectedImages> {
                     size: 100,
                   ),
                   const SizedBox(height: 20),
-                  Text(
-                    'Exporting ${(_progressValue * 100).toStringAsFixed(0)}%',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: theme.brightness == Brightness.dark
-                          ? Colors.white
-                          : Colors.black,
+                  Semantics(
+                    label: 'This is Showing you the Expoeting pdf progress bar',
+                    child: Text(
+                      'Exporting ${(_progressValue * 100).toStringAsFixed(0)}%',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: theme.brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
+                      ),
                     ),
                   ),
                 ],

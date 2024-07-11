@@ -85,12 +85,15 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Image to PDF Converter",
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: Color(0xff232946),
+        title: Semantics(
+          label: 'This is the Main Page Were u can convert Image to Pdf',
+          child: const Text(
+            "Image to PDF Converter",
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: Color(0xff232946),
+            ),
           ),
         ),
         centerTitle: true,
@@ -112,36 +115,7 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
       ),
-      // body: Center(
-      //   child: Column(
-      //     mainAxisSize: MainAxisSize.min,
-      //     children: [
-      //       _buildButton(
-      //         label: 'Pick Images from Gallery',
-      //         onPressed: _pickGalleryImages,
-      //         icon: Icons.photo_library,
-      //         buttonText: "Gallery Images",
-      //         fontSize: 20,
-      //       ),
-      //       const Gap(20),
-      //       _buildButton(
-      //         label: 'Capture Image with Camera',
-      //         onPressed: _captureCameraImage,
-      //         icon: Icons.camera_alt,
-      //         buttonText: "Camera Image",
-      //         fontSize: 20,
-      //       ),
-      //       const Gap(20),
-      //       _buildButton(
-      //         label: 'View Saved PDFs',
-      //         onPressed: _showCreatedPDFs,
-      //         icon: Icons.picture_as_pdf,
-      //         buttonText: "View Saved PDF",
-      //         fontSize: 20,
-      //       ),
-      //     ],
-      //   ),
-      // ),
+  
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -150,7 +124,7 @@ class _MainPageState extends State<MainPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Semantics(
-              label: 'Pick Image From Gallery',
+              label: 'This will Pick Image From Gallery',
               child: CustomIconButton(
                 icon: Icons.photo,
                 color: const Color(0xff232946),
@@ -161,7 +135,7 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
             Semantics(
-              label: 'Capture Image From Camera',
+              label: 'This will Capture Image From Camera',
               child: CustomIconButton(
                 icon: Icons.camera,
                 color: const Color(0xff232946),
@@ -172,7 +146,7 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
             Semantics(
-              label: 'View Saved PDF',
+              label: 'This will  View All Saved PDF',
               child: CustomIconButton(
                 icon: Icons.storage,
                 color: const Color(0xff232946),
