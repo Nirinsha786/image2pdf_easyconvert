@@ -103,7 +103,7 @@ class _MainPageState extends State<MainPage> {
             label: 'Theme Mode',
             child: IconButton(
               icon: Semantics(
-                label: 'Theme Changing Icon Button',
+                label: 'This will change the theme',
                 child: Icon(
                   
                   widget.isDarkTheme ? Icons.nights_stay : Icons.wb_sunny,
@@ -124,7 +124,7 @@ class _MainPageState extends State<MainPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Semantics(
-              label: 'This will Pick Image From Gallery',
+              label: 'Pick Image From Phone Gallery',
               child: CustomIconButton(
                 icon: Icons.photo,
                 color: const Color(0xff232946),
@@ -135,7 +135,7 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
             Semantics(
-              label: 'This will Capture Image From Camera',
+              label: 'Capture Image From Phone Camera',
               child: CustomIconButton(
                 icon: Icons.camera,
                 color: const Color(0xff232946),
@@ -146,7 +146,7 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
             Semantics(
-              label: 'This will  View All Saved PDF',
+              label: 'To View All Saved PDF',
               child: CustomIconButton(
                 icon: Icons.storage,
                 color: const Color(0xff232946),
